@@ -3,42 +3,34 @@ import { getAnalytics } from "firebase/analytics";
 import { getFirestore, collection, doc, getDoc, onSnapshot } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { getDatabase } from "firebase/database";
 
-// Firebase configuration using environment variables for security
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_FIREBASE_APP_ID,
-  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
+  apiKey: "AIzaSyBEAlYxZQmHGifcNbCvjFOr34_eKoDY1FI",
+  authDomain: "rooms-i.firebaseapp.com",
+  projectId: "rooms-i",
+  storageBucket: "rooms-i.appspot.com",
+  messagingSenderId: "939916626641",
+  appId: "1:939916626641:web:df5149ca6dac60030353f0",
+  measurementId: "G-M0Y4E1254K",
 };
 
 // Initialize Firebase app
 const app = initializeApp(firebaseConfig);
-
-// Initialize Firebase services with error handling
-let analytics = null;
-try {
-  if (typeof window !== "undefined") {
-    analytics = getAnalytics(app); // Analytics works only in browser
-  }
-} catch (error) {
-  console.error("Firebase Analytics initialization failed:", error);
-}
-
+const analytics = typeof window !== "undefined" ? getAnalytics(app) : null; // Analytics works only in browser
 const db = getFirestore(app);
 const auth = getAuth(app);
 const storage = getStorage(app);
+const database = getDatabase(app);
 
-// Export initialized services and utility functions
+// Export individual services
 export {
   app,
   db,
   auth,
   analytics,
   storage,
+  database,
   collection,
   doc,
   getDoc,
@@ -47,3 +39,22 @@ export {
   uploadBytes,
   getDownloadURL,
 };
+
+// Add a default export with all services
+const firebase = {
+  app,
+  db,
+  auth,
+  analytics,
+  storage,
+  database,
+  collection,
+  doc,
+  getDoc,
+  onSnapshot,
+  ref,
+  uploadBytes,
+  getDownloadURL,
+};
+
+export default firebase;
