@@ -1,11 +1,12 @@
 import React from 'react';
 
-function RoomCard({ room, UserName, roomNumber, setDetailedRoom }) {
+function RoomCard({ room, userId,userName, roomNumber, setDetailedRoom }) {
     return (
         <div className="p-6 relative bg-gray-100 dark:bg-gray-800 rounded-lg shadow-lg w-[50vw]">
             <div className="absolute top-4 right-4 bg-gray-600 text-white px-4 py-2 rounded-lg text-sm">
-                <p>Room ID: {room.roomId}</p>
-                <p>Created by: {UserName}</p>
+                {/* <p>Created by: {userId}</p> */}
+                <p>Created by: {userName}</p>
+                <p>Room Number: {room.roomNumber}</p>
             </div>
             <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-white">{room.roomName}</h2>
             <p className="text-sm mb-4 text-gray-700 dark:text-gray-300">{room.description}</p>

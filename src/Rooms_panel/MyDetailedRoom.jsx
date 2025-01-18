@@ -1,6 +1,6 @@
 import React from 'react';
 
-function DetailedRoomCard({ room = {}, setDetailedRoom }) {
+function MyDetailedRoom({ room = {}, setDetailedRoom }) {
     const {
         roomName = "Unknown Room",
         description = "No description provided.",
@@ -104,13 +104,8 @@ function DetailedRoomCard({ room = {}, setDetailedRoom }) {
                 <strong className="text-sm text-gray-700 dark:text-gray-300">Time Uploaded:</strong>
                 <p className="text-sm text-gray-700 dark:text-gray-300">{uploadTime}</p>
             </div>
-            <button
-                className="py-3 px-10 bg-gray-600 text-white rounded-lg border-dotted border-2 border-gray-400 absolute bottom-4 right-4"
-            >
-                collab
-            </button>
         </div>
     );
 }
 
-export default DetailedRoomCard;
+export default MyDetailedRoom;

@@ -53,7 +53,8 @@ const Fyp = ({ createRoom, setCreateRoom, handlePanelSwitch }) => {
                             <RoomCard
                                 key={room.roomId}
                                 room={room}
-                                UserName={room.UserName}
+                                userId={room.userId}
+                                userName={room.userName}
                                 roomNumber={room.roomId}
                                 setDetailedRoom={() => setDetailedRoom(room)}
                             />

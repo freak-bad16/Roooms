@@ -123,11 +123,11 @@ function Profile() {
               </div>
               <div className="text-sm flex justify-evenly mt-4">
                 <div className="flex flex-col items-center gap-1">
-                  <p>200</p>
+                  <p>---</p>
                   <p>Followers</p>
                 </div>
                 <div className="flex flex-col items-center gap-1">
-                  <p>200</p>
+                  <p>---</p>
                   <p>Following</p>
                 </div>
               </div>
