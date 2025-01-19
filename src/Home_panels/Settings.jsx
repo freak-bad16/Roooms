@@ -24,7 +24,7 @@ function Settings({ handlePanelSwitch }) {
         <div className="text-center">
           {/* Developer working message */}
           <p className="mb-4 text-3xl font-bold text-indigo-600 dark:text-indigo-400">
-            Developer is working hard on this panel!
+            Developer is working hard on this website!
           </p>
           <p className="mb-8 text-lg text-gray-500 dark:text-gray-200">
             Features available so far:
@@ -37,19 +37,24 @@ function Settings({ handlePanelSwitch }) {
             <li className="mb-2 text-lg">You can chat with other users.</li>
             <li className="mb-2 text-lg">You can create a room that will be visible to other users (only public rooms available now).</li>
             <li className="mb-2 text-lg">You can view full details of any room by clicking the "Details" option.</li>
+            <li className="mb-2 text-lg">You can edit and delete rooms (anyone can perform these actions currently).</li>
+            <li className="mb-2 text-lg">You can view your own created rooms under the "My Room" section.</li>
+            <li className="mb-2 text-lg">We also have a feedback page where you can give feedback and help us improve!</li>
           </ol>
 
           {/* Exciting Future Updates */}
           <p className="text-xl font-semibold text-green-600 dark:text-green-400 mb-4">
             Currently working on: <br />
-            - My Room functionality <br />
-            - Room delete and edit features (coming soon!) <br />
-            After that, we'll work on the exciting <strong>Collaboration Option!</strong>
+            - Collaboration options for real-time teamwork <br />
+            - Notifications for updates and messages <br />
+            - Updating the UI to make it more exciting and user-friendly
           </p>
-          
-          {/* Encouraging Message */}
+
           <p className="text-lg text-gray-500 dark:text-gray-200 italic">
             Stay tuned for the next update! We're making everything as amazing as possible. 😊
+          </p>
+          <p className="text-lg text-gray-500 dark:text-gray-200 italic">
+          Will be available for public use with MVP by February!
           </p>
         </div>
       </div>
