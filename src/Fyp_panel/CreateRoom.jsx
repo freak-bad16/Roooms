@@ -37,8 +37,6 @@ const CreateRoom = ({ handlePanelSwitch }) => {
       if (userDoc.exists()) {
         const userData = userDoc.data();
         userName = userData.name || "Anonymous";
-      } else {
-        console.warn("User document does not exist in Firestore.");
       }
 
       const currentDate = new Date();
@@ -93,23 +91,23 @@ const CreateRoom = ({ handlePanelSwitch }) => {
       console.error("Failed to create room:", error);
       setError("Failed to create room. Please try again.");
     }
-  }, [handlePanelSwitch]);
+  }, [handlePanelSwitch, roomName, description, privacy, features, techStack, requirements, tags]);
 
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-white shadow-lg rounded-lg text-black"> {/* Modal container */}
-      <h2 className="text-2xl font-bold text-gray-800 mb-4">Create Room</h2> {/* Heading */}
+    <div className="max-w-2xl mx-auto p-6 bg-white shadow-lg rounded-lg text-black">
+      <h2 className="text-2xl font-bold text-gray-800 mb-4">Create Room</h2>
 
-      {error && <p className="text-red-500 mb-4">{error}</p>} {/* Error message */}
+      {error && <p className="text-red-500 mb-4">{error}</p>}
 
-      <form onSubmit={(e) => { e.preventDefault(); handleCreate(); }} className="space-y-4"> {/* Form with vertical spacing */}
+      <form onSubmit={(e) => { e.preventDefault(); handleCreate(); }} className="space-y-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700">Room Name</label> {/* Label */}
+          <label className="block text-sm font-medium text-gray-700">Room Name</label>
           <input
             type="text"
             placeholder="Enter Room Name"
             value={roomName}
             onChange={(e) => setRoomName(e.target.value)}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" // Input styles
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
           />
         </div>
 
@@ -119,7 +117,7 @@ const CreateRoom = ({ handlePanelSwitch }) => {
             placeholder="Enter Description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" // Textarea styles
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
           />
         </div>
 
@@ -128,7 +126,7 @@ const CreateRoom = ({ handlePanelSwitch }) => {
           <select
             value={privacy}
             onChange={(e) => setPrivacy(e.target.value)}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" // Select styles
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
           >
             <option value="Public">Public</option>
             <option value="Private">Private</option>
@@ -142,7 +140,7 @@ const CreateRoom = ({ handlePanelSwitch }) => {
             placeholder="Enter features"
             value={features}
             onChange={(e) => setFeatures(e.target.value)}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" // Input styles
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
           />
         </div>
 
@@ -153,7 +151,7 @@ const CreateRoom = ({ handlePanelSwitch }) => {
             placeholder="Enter tech stack"
             value={techStack}
             onChange={(e) => setTechStack(e.target.value)}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" // Input styles
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
           />
         </div>
 
@@ -164,7 +162,7 @@ const CreateRoom = ({ handlePanelSwitch }) => {
             placeholder="Enter requirements"
             value={requirements}
             onChange={(e) => setRequirements(e.target.value)}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" // Input styles
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
           />
         </div>
 
@@ -175,21 +173,21 @@ const CreateRoom = ({ handlePanelSwitch }) => {
             placeholder="Enter tags"
             value={tags}
             onChange={(e) => setTags(e.target.value)}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm" // Input styles
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
           />
         </div>
 
-        <div className="flex justify-end space-x-4"> {/* Button container */}
+        <div className="flex justify-end space-x-4">
           <button
             type="button"
             onClick={() => handlePanelSwitch("fyp")}
-            className="px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400" // Cancel button styles
+            className="px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400"
           >
             Cancel
           </button>
           <button
             type="submit"
-            className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600" // Create button styles
+            className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
           >
             Create Room
           </button>

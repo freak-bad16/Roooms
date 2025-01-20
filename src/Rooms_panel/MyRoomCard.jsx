@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
+import { getDatabase, ref, remove } from "firebase/database"; // Ensure correct imports
 
 function MyRoomCard({ room, onEdit, setDetailedRoom }) {
-  
   const handleDelete = () => {
     if (window.confirm("Do you really want to delete this room?")) {
-      const db = getDatabase();
+      const db = getDatabase(); // Initialize the database
       const roomRef = ref(db, `rooms/${room.id}`);
       remove(roomRef)
         .then(() => alert("Room deleted successfully"))
