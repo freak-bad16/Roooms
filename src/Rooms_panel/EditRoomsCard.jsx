@@ -28,7 +28,7 @@ function EditMyRoomCard({ room, onSave }) {
   };
 
   return (
-    <div className="p-6 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-lg w-[50vw]">
+    <div className="p-6 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-lg w-[50vw] m-auto">
       <h2 className="text-2xl font-bold mb-4 text-gray-800 dark:text-white">Edit Room</h2>
       <div className="mb-4">
         <label className="block text-sm text-gray-700 dark:text-gray-300">Room Name</label>

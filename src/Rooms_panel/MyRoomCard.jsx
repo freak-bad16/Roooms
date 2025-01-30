@@ -1,10 +1,14 @@
 import React from "react";
 import { getDatabase, ref, remove } from "firebase/database"; // Ensure correct imports
 
-function MyRoomCard({ room, onEdit, setDetailedRoom }) {
+function MyRoomCard({ room, onEdit, setDetailedRoom, currentUserData }) {
+  if (!currentUserData || currentUserData.name !== room.userName) {
+    return null; // Don't render the component if the user is not the creator
+  }
+
   const handleDelete = () => {
     if (window.confirm("Do you really want to delete this room?")) {
-      const db = getDatabase(); // Initialize the database
+      const db = getDatabase();
       const roomRef = ref(db, `rooms/${room.id}`);
       remove(roomRef)
         .then(() => alert("Room deleted successfully"))
@@ -39,13 +43,13 @@ function MyRoomCard({ room, onEdit, setDetailedRoom }) {
         </div>
       </div>
       <div className="mt-4 flex gap-4">
-        <button onClick={() => onEdit(room)} className="py-2 px-4 bg-blue-600 text-white rounded-lg">
+        <button onClick={() => onEdit(room)} className="py-2 px-4 bg-blue-600 text-white rounded-lg hover:border-dashed active:bg-gray-700 border-dotted ">
           Edit
         </button>
-        <button onClick={handleDelete} className="py-2 px-4 bg-red-600 text-white rounded-lg">
+        <button onClick={handleDelete} className="py-2 px-4 bg-red-600 text-white rounded-lg hover:border-dashed active:bg-gray-700 border-dotted ">
           Delete
         </button>
-        <button onClick={() => setDetailedRoom(room)} className="py-3 px-10 bg-gray-600 text-white rounded-lg border-dotted border-2 border-gray-400 absolute bottom-4 right-4">
+        <button onClick={() => setDetailedRoom(room)} className="py-3 px-10 bg-gray-600 text-white rounded-lg border-dotted border-2 border-gray-400 absolute bottom-4 right-4 bg-gray-600 hover:border-dashed active:bg-gray-700 ">
           Details
         </button>
       </div>
